@@ -39,7 +39,7 @@
 		    	<!-- Department -->
 		    	<li>
 		    		<a href="/departments">
-		    			<i class="fa fa-laptop"></i> &nbsp;
+		    			<i class="fa fa-users"></i> &nbsp;
 		    			Phòng ban
 		    		</a>
 		    	</li>
