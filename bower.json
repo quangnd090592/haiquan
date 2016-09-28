@@ -1,0 +1,54 @@
+{
+  "name": "Mockup",
+  "version": "0.0.0",
+  "authors": [
+    "HoanVuSolutions"
+  ],
+  "description": "HaiQuan",
+  "license": "RLS",
+  "homepage": "www.crepro-mockup.com",
+  "private": true,
+  "dependencies": {
+    "angular": "#1.4.8",
+    "angular-bootstrap": "~0.12.1",
+    "angular-cookies": "~1.4.2",
+    "angular-input-masks": "~2.0.0",
+    "angular-resource": "~1.3.14",
+    "angular-sanitize": "~1.3.15",
+    "angular-timer": "~1.3.1",
+    "angular-ui-utils": "~2.0.0",
+    "angular-xeditable": "~0.1.8",
+    "awesome-bootstrap-checkbox": "~0.3.4",
+    "bower": "*",
+    "jquery-ui": "~1.11.4",
+    "jquery.maskedinput": "~1.4.1",
+    "magnific-popup": "~1.0.0",
+    "ng-file-upload": "~5.0.9",
+    "ng-table": "#0.8.3",
+    "select2": "~4.0.0",
+    "bootstrap": "~3.3.5",
+    "fontawesome": "~4.4.0",
+    "ui-iconpicker": "~0.1.4",
+    "angular-animate": "~1.4.2",
+    "underscore": "~1.8.3",
+    "twitter-bootstrap-wizard": "~1.0.0",
+    "ng-file-upload-shim": "~12.0.4",
+    "font-awesome": "fontawesome#^4.6.1"
+  },
+  "resolutions": {
+    "angular": "1.4.8",
+    "humanize-duration": "~3.2.0",
+    "angular-bootstrap": "~0.12.1"
+  },
+  "overrides": {
+    "cryptojslib": {
+      "main": [
+        "./rollups/pbkdf2.js",
+        "./rollups/aes.js"
+      ]
+    }
+  },
+  "devDependencies": {
+    "compass-breakpoint": "breakpoint-sass#~2.6.1"
+  }
+}

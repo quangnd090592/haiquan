@@ -1,0 +1,8 @@
+/vendor
+/node_modules
+Homestead.yaml
+.env
+/public/bower_components
+/public/avatars
+/public/report_download.log
+/public/uploads/
