@@ -18,12 +18,27 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
+    public function getRememberToken()
+    {
+        return $this->rememberToken;
+    }
+
+    public function setRememberToken($value)
+    {
+        $this->rememberToken = $value;
+    }
+
+    public function getRememberTokenName()
+    {
+        return 'rememberToken';
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'rememberToken',
     ];
 }
