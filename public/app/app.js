@@ -6,6 +6,7 @@ var defaultModules =
 	'Home',
 	'Assets',
 	'Departments',
+	'Producers',
 ];
 
 if(typeof modules != 'undefined'){

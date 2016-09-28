@@ -25,14 +25,23 @@
 		    	<li>
 		    		<a href="/assets">
 		    			<i class="fa fa-laptop"></i> &nbsp;
-		    			{{trans('dashboard.assets')}}
+		    			Tài Sản
 		    		</a>
 		    	</li>
 
+		    	<!-- Department -->
 		    	<li>
 		    		<a href="/departments">
 		    			<i class="fa fa-laptop"></i> &nbsp;
-		    			{{trans('dashboard.departments')}}
+		    			Phòng ban
+		    		</a>
+		    	</li>
+
+		    	<!-- Producers -->
+		    	<li>
+		    		<a href="/producers">
+		    			<i class="fa fa-paper-plane"></i> &nbsp;
+		    			Xuất xứ
 		    		</a>
 		    	</li>
 		    </ul>
