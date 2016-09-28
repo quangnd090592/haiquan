@@ -52,6 +52,33 @@ departmentsModule.controller('departmentsController', ['$scope', '$modal', '$fil
         });
     }
 
+    $scope.addUserToDepartment = function(id) {
+        var teamplate = '/departments/'+id+'/add-user?v=' + new Date().getTime();
+        var modalInstance = $modal.open({
+            animation: true,
+            templateUrl: teamplate,
+            controller: 'ModalDepartmentCtrl',
+            size: null,
+            resolve: {
+            }
+            
+        });
+
+        modalInstance.result.then(function (data) {
+            $scope.tableParams.reload();            
+        }, function () {
+
+        });
+    }
+
+    /**
+     * remove department
+     *
+     * @author Quang <quangnd.92@gmail.com>
+     * 
+     * @param  {[type]} id [description]
+     * @return {[type]}    [description]
+     */
     $scope.removeDepartment = function(id) {
         if(!confirm('Bạn có muốn xóa Phòng ban này?')) {
             return;
@@ -67,7 +94,33 @@ departmentsModule.controller('departmentsController', ['$scope', '$modal', '$fil
 
 }]);
 
-departmentsModule.controller('ModalDepartmentCtrl', ['$scope', '$modal', '$filter', '$modalInstance', 'ngTableParams', 'departmentsService', function ($scope, $modal, $filter, $modalInstance, ngTableParams, departmentsService) {
+departmentsModule.controller('ModalDepartmentCtrl', ['$scope', '$modal', '$filter', '$timeout', '$modalInstance', 'ngTableParams', 'departmentsService', function ($scope, $modal, $filter, $timeout, $modalInstance, ngTableParams, departmentsService) {
+    
+    $scope.intiSelect2 = function(element) {
+        $timeout(function(){
+            $(element).select2();
+        },300);
+
+        $(element).on("change", function (e) {
+            var userSelected = $(element).select2("val");
+
+            departmentsService.addUser($scope.department.id, userSelected).then(function (data){
+                if(data.status) {
+                    angular.forEach($scope.usersNotInDepartment, function(value,key){
+                        if(value.id == parseInt(userSelected)) {
+                            //remove list user in dropdown
+                            $scope.usersNotInDepartment.splice(key,1);
+                            //push to list user
+                            $scope.usersOfDepartment.push(value);
+                        }
+                    })
+                } else {
+                    $scope.errors = 'Lỗi! Không thể thêm tài khoản này.';
+                }
+            });
+        });
+    }
+
     $scope.submit = function (validate) {
         $scope.submitted  = true;
         if(validate){
@@ -82,6 +135,24 @@ departmentsModule.controller('ModalDepartmentCtrl', ['$scope', '$modal', '$filte
             }
         });
     };
+
+    $scope.removeUser = function(userId) {
+        console.log(userId,'userId');
+        departmentsService.removeUser($scope.department.id, userId).then(function (data){
+            if(data.status) {
+                angular.forEach($scope.usersOfDepartment, function(value,key){
+                    if(value.id == userId) {
+                        //remove list user in dropdown
+                        $scope.usersOfDepartment.splice(key,1);
+                        //push to list user
+                        $scope.usersNotInDepartment.push(value);
+                    }
+                })
+            } else {
+                $scope.errors = 'Lỗi! Không thể thêm tài khoản này.';
+            }
+        });
+    }
 
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');

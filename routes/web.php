@@ -23,6 +23,8 @@ Route::get('/', 'HomeController@index');
 
 Route::group(['middleware' => 'isAdmin'], function() {
     Route::resource('/departments', 'DepartmentsController');
+    Route::get('/departments/{id}/add-user','DepartmentsController@addUser');
+
 	Route::resource('/producers', 'ProducersController');
 	Route::resource('/asset-types', 'AssetTypesController');
 	Route::resource('/roles', 'RolesController');

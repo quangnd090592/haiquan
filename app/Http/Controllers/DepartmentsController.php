@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Models\DepartmentsModel;
+use App\User;
 
 class DepartmentsController extends Controller
 {
@@ -59,5 +60,23 @@ class DepartmentsController extends Controller
         $departmentModel = new DepartmentsModel();
         $department = $departmentModel->find($id);
         return view('departments.create', compact('department'));
+    }
+
+    public function addUser($id)
+    {
+        $departmentModel = new DepartmentsModel();
+        $usersModel = new User();
+
+        $department = $departmentModel->find($id);
+        if(empty($department)) {
+            return abort(404);
+        }
+
+        $usersOfDepartment = $department->users;
+        $listId = array_column($usersOfDepartment->toArray(),'id');
+
+        $usersNotInDepartment = $usersModel->whereNotIn('id', $listId)->get()->toArray();
+
+        return view('departments.addUser', compact('usersOfDepartment','usersNotInDepartment','department'));
     }
 }

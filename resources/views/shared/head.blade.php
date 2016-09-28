@@ -13,7 +13,8 @@
     {!!Html::style('bower_components/font-awesome/css/font-awesome.min.css')!!}   
 
     {!!Html::style('bower_components/ng-table/dist/ng-table.min.css')!!}
-
+    {!!Html::style('bower_components/select2/dist/css/select2.min.css')!!}
+    
     <!-- Custom Theme Style -->
     {!!Html::style('css/custom.css')!!}
 </head>

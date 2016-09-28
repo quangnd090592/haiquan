@@ -17,6 +17,10 @@
                         	<i class="fa fa-pencil action"></i>
                     	</a>
 
+                    	<a ng-click="addUserToDepartment(department.id)" class="pointer">
+                        	<i class="fa fa-user-plus action"></i>
+                    	</a>
+
                     	<a ng-click="removeDepartment(department.id)" class="pointer">
                         	<i class="fa fa-trash action"></i>
                     	</a>

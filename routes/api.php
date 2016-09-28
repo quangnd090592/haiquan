@@ -18,6 +18,9 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:api');
 
 Route::resource('/departments', 'Api\DepartmentsController');
+Route::post('/departments/add-user','Api\DepartmentsController@addUser');
+Route::post('/departments/remove-user','Api\DepartmentsController@removeUser');
+
 Route::resource('/producers', 'Api\ProducersController');
 Route::resource('/asset-types', 'Api\AssetTypesController');
 Route::resource('/roles', 'Api\RolesController');

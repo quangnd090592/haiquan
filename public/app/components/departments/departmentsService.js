@@ -65,6 +65,34 @@ departmentsModule.factory('departmentsResource',['$resource', function ($resourc
         return defer.promise;
     }
 
+    this.addUser = function(departmentId, userId) {
+        var defer = $q.defer();
+        var data = {departmentId: departmentId, userId: parseInt(userId)};
+
+        var temp  = new departmentsResource(data);
+        temp.$save({method: 'add-user'}, function success(data) {
+            defer.resolve(data);
+        },
+        function error(reponse) {
+            defer.resolve(reponse.data);
+        });
+        return defer.promise;
+    }
+
+    this.removeUser = function(departmentId, userId) {
+        var defer = $q.defer();
+        var data = {departmentId: departmentId, userId: userId};
+
+        var temp  = new departmentsResource(data);
+        temp.$save({method: 'remove-user'}, function success(data) {
+            defer.resolve(data);
+        },
+        function error(reponse) {
+            defer.resolve(reponse.data);
+        });
+        return defer.promise;
+    }
+
     this.setDepartments = function(data) {
         departments = data;
         return departments;

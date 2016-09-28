@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\DepartmentsModel;
 use Illuminate\Http\JsonResponse;
 use App\Http\Requests\DepartmentsFormRequest;
+use App\User;
 
 class DepartmentsController extends Controller {
 
@@ -64,6 +65,55 @@ class DepartmentsController extends Controller {
 			$status = 1;
 		}
 		return new JsonResponse(['status'=>$status]);
+	}
+
+	/**
+	 * add user to department
+	 *
+	 * @author Quang <quangnd.92@gmail.com>
+	 * 
+	 * @param Request $request [description]
+	 */
+	public function addUser(Request $request)
+	{
+		$data = $request->all();
+
+		$departmentsModel = new DepartmentsModel();
+		$usersModel = new User();
+
+		$department = $departmentsModel->findOrFail($data['departmentId']);
+		$checkUser = $department->users()->where('userId', $data['userId'])->count();
+
+		if(!$checkUser) {
+			$department->users()->attach(['userId'=>$data['userId']]);
+			return new JsonResponse(['status' => 1]);
+		}
+		return new JsonResponse(['status' => 0]);
+	}
+
+	/**
+	 * remove user from department
+	 *
+	 * @author Quang <quangnd.92@gmail.com>
+	 * 
+	 * @param  Request $request [description]
+	 * @return [type]           [description]
+	 */
+	public function removeUser(Request $request)
+	{
+		$data = $request->all();
+
+		$departmentsModel = new DepartmentsModel();
+		$usersModel = new User();
+
+		$department = $departmentsModel->findOrFail($data['departmentId']);
+		$checkUser = $department->users()->where('userId', $data['userId'])->count();
+
+		if($checkUser) {
+			$department->users()->detach(['userId'=>$data['userId']]);
+			return new JsonResponse(['status' => 1]);
+		}
+		return new JsonResponse(['status' => 0]);
 	}
 
 }

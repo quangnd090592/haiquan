@@ -10,6 +10,11 @@ class DepartmentsModel extends Model
 
 	protected $fillable = ['name', 'description'];
 
+	public function users()
+	{
+		return $this->belongsToMany('App\User', 'users_departments', 'departmentId', 'userId');
+	}
+
 	/**
 	 * create department
 	 *
