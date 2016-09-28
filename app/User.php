@@ -41,4 +41,28 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'rememberToken',
     ];
+
+    /**
+     * The roles that belong to the user.
+     */
+    public function roles()
+    {
+        return $this->belongsToMany('App\Models\RolesModel','users_roles', 'userId', 'roleId');
+    }
+
+    /**
+     * check user is admin?
+     *
+     * @author Quang <quang@gmail.com>
+     * 
+     * @return boolean [description]
+     */
+    public function isAdmin()
+    {
+        if(\Auth::check()) {
+            return \Auth::user()->roles()->where('slug','admin')->count();
+        } else {
+            return false;
+        }
+    }
 }

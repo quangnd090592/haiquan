@@ -7,6 +7,8 @@ var defaultModules =
 	'Assets',
 	'Departments',
 	'Producers',
+	'AssetTypes',
+	'Roles',
 ];
 
 if(typeof modules != 'undefined'){

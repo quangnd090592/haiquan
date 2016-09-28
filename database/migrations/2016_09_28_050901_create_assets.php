@@ -29,7 +29,7 @@ class CreateAssets extends Migration
             $table->string('port')->nullable();
 
             $table->integer('assetType_id')->unsigned();
-            $table->foreign('assetType_id')->references('id')->on('assetTypes')
+            $table->foreign('assetType_id')->references('id')->on('asset_types')
                   ->onUpdate('cascade');
 
             $table->integer('producer_id')->unsigned();

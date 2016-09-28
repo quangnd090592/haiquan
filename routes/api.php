@@ -19,3 +19,5 @@ Route::get('/user', function (Request $request) {
 
 Route::resource('/departments', 'Api\DepartmentsController');
 Route::resource('/producers', 'Api\ProducersController');
+Route::resource('/asset-types', 'Api\AssetTypesController');
+Route::resource('/roles', 'Api\RolesController');

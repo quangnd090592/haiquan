@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UsersDepartments extends Migration
+class CreateTableUsersRoles extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class UsersDepartments extends Migration
      */
     public function up()
     {
-        Schema::create('users_departments', function (Blueprint $table) {
+        Schema::create('users_roles', function (Blueprint $table) {
             $table->increments('id')->unsigned();
 
             $table->integer('userId')->unsigned()->index();
             $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');
 
-            $table->integer('departmentId')->unsigned()->index();
-            $table->foreign('departmentId')->references('id')->on('departments')->onDelete('cascade');
+            $table->integer('roleId')->unsigned()->index();
+            $table->foreign('roleId')->references('id')->on('roles')->onDelete('cascade');
 
             $table->timestamps();
         });
@@ -33,6 +33,6 @@ class UsersDepartments extends Migration
      */
     public function down()
     {
-        Schema::drop('users_departments');
+        Schema::drop('users_roles');
     }
 }

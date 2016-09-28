@@ -23,6 +23,13 @@
 		  <div class="menu_section">
 		    <ul class="nav side-menu">
 		    	<li>
+		    		<a href="/roles">
+		    			<i class="fa fa-key"></i> &nbsp;
+		    			Quyền
+		    		</a>
+		    	</li>
+
+		    	<li>
 		    		<a href="/assets">
 		    			<i class="fa fa-laptop"></i> &nbsp;
 		    			Tài Sản
@@ -42,6 +49,14 @@
 		    		<a href="/producers">
 		    			<i class="fa fa-paper-plane"></i> &nbsp;
 		    			Xuất xứ
+		    		</a>
+		    	</li>
+
+		    	<!-- Asset Type -->
+		    	<li>
+		    		<a href="/asset-types">
+		    			<i class="fa fa-puzzle-piece"></i> &nbsp;
+		    			Loại Tài Sản
 		    		</a>
 		    	</li>
 		    </ul>
