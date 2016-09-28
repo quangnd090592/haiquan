@@ -10,7 +10,10 @@
     <!-- Bootstrap -->
     {!!Html::style('bower_components/bootstrap/dist/css/bootstrap.min.css')!!}
     <!-- Font Awesome -->
-    {!!Html::style('bower_components/font-awesome/css/font-awesome.min.css')!!}    
+    {!!Html::style('bower_components/font-awesome/css/font-awesome.min.css')!!}   
+
+    {!!Html::style('bower_components/ng-table/dist/ng-table.min.css')!!}
+
     <!-- Custom Theme Style -->
     {!!Html::style('css/custom.min.css')!!}
 </head>

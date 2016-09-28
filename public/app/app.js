@@ -3,7 +3,8 @@ var defaultModules =
 	'ui.bootstrap',
 	'ngResource',
 	'ngTable',
-	'Home'
+	'Home',
+	'Assets',
 ];
 
 if(typeof modules != 'undefined'){
