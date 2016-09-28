@@ -326,7 +326,7 @@ body .container.body .right_col {
   background: #D9DEE4; }
 
 body {
-  color: #73879C;
+  color: #000000;
   background: #2A3F54;
   font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
   font-size: 13px;
@@ -4127,3 +4127,6 @@ ul.notifications {
   border: 1px solid #e5e5e5; }
 
 /** /Dropzone.js **/
+.text-require, .show-error {
+  color:red;
+}

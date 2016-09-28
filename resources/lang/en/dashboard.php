@@ -14,5 +14,6 @@ return [
     */
 
     'assets' => 'Assets',
+    'departments' => 'Departments',
 
 ];

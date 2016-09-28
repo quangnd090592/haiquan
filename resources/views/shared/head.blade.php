@@ -15,5 +15,5 @@
     {!!Html::style('bower_components/ng-table/dist/ng-table.min.css')!!}
 
     <!-- Custom Theme Style -->
-    {!!Html::style('css/custom.min.css')!!}
+    {!!Html::style('css/custom.css')!!}
 </head>

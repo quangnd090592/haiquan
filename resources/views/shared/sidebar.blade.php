@@ -28,6 +28,13 @@
 		    			{{trans('dashboard.assets')}}
 		    		</a>
 		    	</li>
+
+		    	<li>
+		    		<a href="/departments">
+		    			<i class="fa fa-laptop"></i> &nbsp;
+		    			{{trans('dashboard.departments')}}
+		    		</a>
+		    	</li>
 		    </ul>
 		  </div>
 

@@ -5,6 +5,7 @@ var defaultModules =
 	'ngTable',
 	'Home',
 	'Assets',
+	'Departments',
 ];
 
 if(typeof modules != 'undefined'){

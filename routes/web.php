@@ -22,3 +22,4 @@ Auth::routes();
 Route::get('/', 'HomeController@index');
 
 Route::get('/assets', 'AssetsController@index');
+Route::resource('/departments', 'DepartmentsController');
