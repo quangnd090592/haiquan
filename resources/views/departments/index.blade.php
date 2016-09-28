@@ -14,11 +14,11 @@
 		          	<td data-title="'Mô tả'" sortable="'name'">@{{department.description}}</td>
 		          	<td>
 		          		<a ng-click="addDepartment(department.id)" class="pointer">
-                        	<i class="fa fa-pencil"></i>
+                        	<i class="fa fa-pencil action"></i>
                     	</a>
 
                     	<a ng-click="removeDepartment(department.id)" class="pointer">
-                        	<i class="fa fa-trash"></i>
+                        	<i class="fa fa-trash action"></i>
                     	</a>
 		          	</td>
 		        </tr>

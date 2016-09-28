@@ -4130,3 +4130,6 @@ ul.notifications {
 .text-require, .show-error {
   color:red;
 }
+.action {
+  color:#000000;
+}
