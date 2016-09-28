@@ -21,9 +21,10 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 
-Route::get('/assets', 'AssetsController@index');
-
-Route::resource('/departments', 'DepartmentsController');
-Route::resource('/producers', 'ProducersController');
-Route::resource('/asset-types', 'AssetTypesController');
-Route::resource('/roles', 'RolesController');
+Route::group(['middleware' => 'isAdmin'], function() {
+    Route::resource('/departments', 'DepartmentsController');
+	Route::resource('/producers', 'ProducersController');
+	Route::resource('/asset-types', 'AssetTypesController');
+	Route::resource('/roles', 'RolesController');
+	Route::resource('/assets', 'AssetsController');
+});

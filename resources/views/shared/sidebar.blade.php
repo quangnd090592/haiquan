@@ -36,6 +36,14 @@
 		    		</a>
 		    	</li>
 
+		    	<!-- Asset Type -->
+		    	<li>
+		    		<a href="/asset-types">
+		    			<i class="fa fa-puzzle-piece"></i> &nbsp;
+		    			Loại Tài Sản
+		    		</a>
+		    	</li>
+
 		    	<!-- Department -->
 		    	<li>
 		    		<a href="/departments">
@@ -50,15 +58,7 @@
 		    			<i class="fa fa-paper-plane"></i> &nbsp;
 		    			Xuất xứ
 		    		</a>
-		    	</li>
-
-		    	<!-- Asset Type -->
-		    	<li>
-		    		<a href="/asset-types">
-		    			<i class="fa fa-puzzle-piece"></i> &nbsp;
-		    			Loại Tài Sản
-		    		</a>
-		    	</li>
+		    	</li>		    	
 		    </ul>
 		  </div>
 
