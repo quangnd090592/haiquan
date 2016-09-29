@@ -12,7 +12,7 @@ class DepartmentsModel extends Model
 
 	public function users()
 	{
-		return $this->belongsToMany('App\User', 'users_departments', 'departmentId', 'userId');
+		return $this->belongsToMany('App\Models\User', 'users_departments', 'departmentId', 'userId');
 	}
 
 	/**

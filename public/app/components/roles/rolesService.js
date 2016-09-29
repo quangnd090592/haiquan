@@ -65,6 +65,34 @@ rolesModule.factory('rolesResource',['$resource', function ($resource){
         return defer.promise;
     }
 
+    this.addUser = function(roleId, userId) {
+        var defer = $q.defer();
+        var data = {roleId: roleId, userId: parseInt(userId)};
+
+        var temp  = new rolesResource(data);
+        temp.$save({method: 'add-user'}, function success(data) {
+            defer.resolve(data);
+        },
+        function error(reponse) {
+            defer.resolve(reponse.data);
+        });
+        return defer.promise;
+    }
+
+    this.removeUser = function(roleId, userId) {
+        var defer = $q.defer();
+        var data = {roleId: roleId, userId: userId};
+
+        var temp  = new rolesResource(data);
+        temp.$save({method: 'remove-user'}, function success(data) {
+            defer.resolve(data);
+        },
+        function error(reponse) {
+            defer.resolve(reponse.data);
+        });
+        return defer.promise;
+    }
+
     this.setRoles = function(data) {
         roles = data;
         return roles;

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Models\DepartmentsModel;
-use App\User;
+use App\Models\User;
 
 class DepartmentsController extends Controller
 {

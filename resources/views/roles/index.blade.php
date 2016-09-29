@@ -18,6 +18,10 @@
                         	<i class="fa fa-pencil action"></i>
                     	</a>
 
+                    	<a ng-click="addUserToRole(role.id)" class="pointer">
+                        	<i class="fa fa-user action"></i>
+                    	</a>
+
                     	<a ng-click="removeRole(role.id)" class="pointer">
                         	<i class="fa fa-trash action"></i>
                     	</a>

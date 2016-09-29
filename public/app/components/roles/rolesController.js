@@ -1,4 +1,4 @@
-rolesModule.controller('rolesController', ['$scope', '$modal', '$filter', 'ngTableParams', 'rolesService', function ($scope, $modal, $filter, ngTableParams, rolesService) {
+rolesModule.controller('rolesController', ['$scope', '$modal', '$filter','$timeout', 'ngTableParams', 'rolesService', function ($scope, $modal, $filter, $timeout, ngTableParams, rolesService) {
 	$('.wrap-content').removeClass('hidden');
 	$scope.roles = rolesService.setRoles(angular.copy(window.roles));
     
@@ -52,6 +52,14 @@ rolesModule.controller('rolesController', ['$scope', '$modal', '$filter', 'ngTab
         });
     }
 
+    /**
+     * remove role
+     *
+     * @author Quang <quangnd.92@gmail.com>
+     * 
+     * @param  {[type]} id [description]
+     * @return {[type]}    [description]
+     */
     $scope.removeRole = function(id) {
         if(!confirm('Bạn có muốn xóa quyền này?')) {
             return;
@@ -65,9 +73,30 @@ rolesModule.controller('rolesController', ['$scope', '$modal', '$filter', 'ngTab
         
     };
 
+    /**
+     * open modal add user to role
+     *
+     *@author Quang <quangnd.92@gmail.com>
+     * 
+     * @param {[type]} id [description]
+     */
+    $scope.addUserToRole = function(id) {
+        var teamplate = '/roles/'+id+'/add-user?v=' + new Date().getTime();
+        
+        var modalInstance = $modal.open({
+            animation: true,
+            templateUrl: teamplate,
+            controller: 'ModalRoleCtrl',
+            size: null,
+            resolve: {
+            }
+            
+        });
+    }
+
 }]);
 
-rolesModule.controller('ModalRoleCtrl', ['$scope', '$modal', '$filter', '$modalInstance', 'ngTableParams', 'rolesService', function ($scope, $modal, $filter, $modalInstance, ngTableParams, rolesService) {
+rolesModule.controller('ModalRoleCtrl', ['$scope', '$modal', '$filter','$timeout', '$modalInstance', 'ngTableParams', 'rolesService', function ($scope, $modal, $filter, $timeout, $modalInstance, ngTableParams, rolesService) {
     function change_alias( alias ) {
         var str = alias;
         str= str.toLowerCase();
@@ -81,6 +110,56 @@ rolesModule.controller('ModalRoleCtrl', ['$scope', '$modal', '$filter', '$modalI
         str= str.replace(/đ/g,"d"); 
         str= str.replace(/\s{1,}/g,"_");
         return str;
+    }
+
+    $scope.intiSelect2 = function(element) {
+        $timeout(function(){
+            $(element).select2();
+        },300);
+
+        $(element).on("change", function (e) {
+            var userSelected = $(element).select2("val");
+
+            rolesService.addUser($scope.role.id, userSelected).then(function (data){
+                if(data.status) {
+                    angular.forEach($scope.usersNotInRole, function(value,key){
+                        if(value.id == parseInt(userSelected)) {
+                            //remove list user in dropdown
+                            $scope.usersNotInRole.splice(key,1);
+                            //push to list user
+                            $scope.usersInRole.push(value);
+                        }
+                    })
+                } else {
+                    $scope.errors = 'Lỗi! Không thể thêm tài khoản này.';
+                }
+            });
+        });
+    }
+
+    /**
+     * remove user from role
+     *
+     * @author Quang <quangnd.92@gmail.com>
+     * 
+     * @param  {[type]} userId [description]
+     * @return {[type]}        [description]
+     */
+    $scope.removeUser = function(userId) {
+        rolesService.removeUser($scope.role.id, userId).then(function (data){
+            if(data.status) {
+                angular.forEach($scope.usersInRole, function(value,key){
+                    if(value.id == userId) {
+                        //remove list user in dropdown
+                        $scope.usersInRole.splice(key,1);
+                        //push to list user
+                        $scope.usersNotInRole.push(value);
+                    }
+                })
+            } else {
+                $scope.errors = 'Lỗi! Không thể xóa tài khoản này.';
+            }
+        });
     }
 
     $scope.submit = function (validate) {

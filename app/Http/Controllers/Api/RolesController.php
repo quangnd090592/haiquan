@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\RolesModel;
 use Illuminate\Http\JsonResponse;
 use App\Http\Requests\RoleFormRequest;
+use App\Models\User;
 
 class RolesController extends Controller {
 
@@ -64,6 +65,48 @@ class RolesController extends Controller {
 			$status = 1;
 		}
 		return new JsonResponse(['status'=>$status]);
+	}
+
+	public function addUser(Request $request)
+	{
+		$data = $request->all();
+
+		$rolesModel = new RolesModel();
+		$usersModel = new User();
+
+		$role = $rolesModel->findOrFail($data['roleId']);
+		$checkUser = $role->users()->where('userId', $data['userId'])->count();
+
+		if(!$checkUser) {
+			$role->users()->attach(['userId'=>$data['userId']]);
+			return new JsonResponse(['status' => 1]);
+		}
+		return new JsonResponse(['status' => 0]);
+	}
+
+	/**
+	 * remove user from role
+	 *
+	 * @author Quang <quangnd.92@gmail.com>
+	 * 
+	 * @param  Request $request [description]
+	 * @return [type]           [description]
+	 */
+	public function removeUser(Request $request)
+	{
+		$data = $request->all();
+
+		$rolesModel = new RolesModel();
+		$usersModel = new User();
+
+		$role = $rolesModel->findOrFail($data['roleId']);
+		$checkUser = $role->users()->where('userId', $data['userId'])->count();
+
+		if($checkUser) {
+			$role->users()->detach(['userId'=>$data['userId']]);
+			return new JsonResponse(['status' => 1]);
+		}
+		return new JsonResponse(['status' => 0]);
 	}
 
 }

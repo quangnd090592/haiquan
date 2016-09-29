@@ -9,6 +9,7 @@ var defaultModules =
 	'Producers',
 	'AssetTypes',
 	'Roles',
+	'Users',
 ];
 
 if(typeof modules != 'undefined'){

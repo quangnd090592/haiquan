@@ -23,6 +23,13 @@
 		  <div class="menu_section">
 		    <ul class="nav side-menu">
 		    	<li>
+		    		<a href="/users">
+		    			<i class="fa fa-user"></i> &nbsp;
+		    			Tài khoản
+		    		</a>
+		    	</li>
+
+		    	<li>
 		    		<a href="/roles">
 		    			<i class="fa fa-key"></i> &nbsp;
 		    			Quyền

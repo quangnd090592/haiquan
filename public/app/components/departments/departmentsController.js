@@ -63,12 +63,6 @@ departmentsModule.controller('departmentsController', ['$scope', '$modal', '$fil
             }
             
         });
-
-        modalInstance.result.then(function (data) {
-            $scope.tableParams.reload();            
-        }, function () {
-
-        });
     }
 
     /**
@@ -137,7 +131,6 @@ departmentsModule.controller('ModalDepartmentCtrl', ['$scope', '$modal', '$filte
     };
 
     $scope.removeUser = function(userId) {
-        console.log(userId,'userId');
         departmentsService.removeUser($scope.department.id, userId).then(function (data){
             if(data.status) {
                 angular.forEach($scope.usersOfDepartment, function(value,key){
@@ -149,7 +142,7 @@ departmentsModule.controller('ModalDepartmentCtrl', ['$scope', '$modal', '$filte
                     }
                 })
             } else {
-                $scope.errors = 'Lỗi! Không thể thêm tài khoản này.';
+                $scope.errors = 'Lỗi! Không thể xóa tài khoản này.';
             }
         });
     }

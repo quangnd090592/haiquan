@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\DepartmentsModel;
 use Illuminate\Http\JsonResponse;
 use App\Http\Requests\DepartmentsFormRequest;
-use App\User;
+use App\Models\User;
 
 class DepartmentsController extends Controller {
 

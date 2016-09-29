@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -65,4 +65,34 @@ class User extends Authenticatable
             return false;
         }
     }
+
+    /**
+     * create user
+     *
+     * @author Quang <quangnd.92@gmail.com>
+     * 
+     * @param  [type] $data [description]
+     * @return [type]       [description]
+     */
+    public function storeUser($data)
+    {
+        $data['password'] = bcrypt($data['password']);
+        $user =  $this->create($data);
+        return $user;
+    }
+
+    /**
+     * edit user
+     *
+     * @author Quang <quangnd.92@gmail.com>
+     * 
+     * @param [type] $data [description]
+     */
+    public function updateUser($data)
+    {
+        $user = $this;
+        $user->update($data);
+        return $user;
+    }
+
 }

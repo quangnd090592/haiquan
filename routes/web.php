@@ -27,6 +27,10 @@ Route::group(['middleware' => 'isAdmin'], function() {
 
 	Route::resource('/producers', 'ProducersController');
 	Route::resource('/asset-types', 'AssetTypesController');
+
 	Route::resource('/roles', 'RolesController');
+	Route::get('/roles/{id}/add-user','RolesController@addUser');
+
 	Route::resource('/assets', 'AssetsController');
+	Route::resource('/users', 'UsersController');
 });
