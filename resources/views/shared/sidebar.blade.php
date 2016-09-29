@@ -36,12 +36,12 @@
 		    		</a>
 		    	</li>
 
-		    	<li>
+		    	{{-- <li>
 		    		<a href="/assets">
 		    			<i class="fa fa-laptop"></i> &nbsp;
 		    			Tài Sản
 		    		</a>
-		    	</li>
+		    	</li> --}}
 
 		    	<!-- Asset Type -->
 		    	<li>

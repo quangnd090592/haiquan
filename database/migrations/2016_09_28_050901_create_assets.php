@@ -18,9 +18,9 @@ class CreateAssets extends Migration
             $table->string('name');
             $table->string('code')->unique();
             $table->string('years');
-            $table->string('price');
-            $table->string('clientNumber');
-            $table->longText('notes');
+            // $table->string('price');
+            // $table->string('clientNumber');
+            $table->longText('notes')->nullable();
             $table->string('location')->nullable();
             $table->string('win')->nullable();
             $table->string('office')->nullable();
